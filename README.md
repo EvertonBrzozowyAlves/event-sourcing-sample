@@ -4,6 +4,8 @@
 
 > **Regra de ouro:** Para validar regras de negócio, o serviço consulta a **fonte da verdade (KurrentDB / EventStoreDB)** antes de tomar a decisão, evitando aplicar regras com base em dados desatualizados decorrentes da consistência eventual do banco de leitura.
 
+**TODO**: Verificar sobre os snapshots para agrupar eventos no EventStoreDB.
+
 ---
 
 ## 🏛 Arquitetura do Projeto
