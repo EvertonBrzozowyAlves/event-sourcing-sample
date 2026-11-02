@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="event-sourcing-sample-api/event-sourcing-sample-api.csproj" />
+  <Project Path="event-sourcing-sample-projection/event-sourcing-sample-projection.csproj" />
+  <Project Path="event-sourcing-sample-shared/event-sourcing-sample-shared.csproj" />
+</Solution>

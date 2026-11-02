@@ -1,0 +1,56 @@
+@HostAddress = http://localhost:5171
+
+### 1. Criar Todo (com Id explícito e externalId opcional)
+POST {{HostAddress}}/todos
+Content-Type: application/json
+
+{
+  "id": 1,
+  "description": "Estudar KurrentDB e Event Sourcing com CQRS",
+  "status": "Pending",
+  "externalId": "e3b0c442-98fc-1c14-9afb-4c7fa3b7c912"
+}
+
+### 2. Criar Todo com geração automática de Id
+POST {{HostAddress}}/todos
+Content-Type: application/json
+
+{
+  "description": "Configurar projeções para o MongoDB"
+}
+
+### 3. Alterar Todo (Atualiza descrição e status)
+PUT {{HostAddress}}/todos/1
+Content-Type: application/json
+
+{
+  "description": "Estudar KurrentDB, Event Sourcing e Projeções com MongoDB",
+  "status": "InProgress"
+}
+
+### 4. Marcar Todo como Concluído (isDone = true) via PATCH
+PATCH {{HostAddress}}/todos/1/complete
+Content-Type: application/json
+
+### 5. Marcar Todo como Concluído (isDone = true) via PUT
+PUT {{HostAddress}}/todos/1/complete
+Content-Type: application/json
+
+### 6. Excluir Todo (isDeleted = true)
+DELETE {{HostAddress}}/todos/1
+
+### 7. Consultar Todos na base de leitura (MongoDB)
+GET {{HostAddress}}/todos
+Accept: application/json
+
+### 8. Consultar Todos incluindo excluídos (MongoDB)
+GET {{HostAddress}}/todos?includeDeleted=true
+Accept: application/json
+
+### 9. Consultar Todo por Id na base de leitura (MongoDB)
+GET {{HostAddress}}/todos/1
+Accept: application/json
+
+### 10. Consultar histórico de eventos na Fonte da Verdade (KurrentDB)
+GET {{HostAddress}}/todos/1/events
+Accept: application/json
